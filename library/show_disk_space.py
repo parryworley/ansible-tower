@@ -24,7 +24,7 @@ def main():
     r = requests.get(url, params=payload, verify=False)
     if r.status_code == requests.codes.ok:
         result = {"response": r.text}
-        module.exit_json(changed=False, meta=result)
+        module.exit_json(changed=True, meta=result)
     else:
         module.exit_json(msg="Something went wrong")
 
