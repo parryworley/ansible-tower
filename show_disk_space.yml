@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
   vars:
-    api_key: !vault |
+     - api_key: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           64303031303434373465306561646533343134623737373665363139303237336333653763643230
           3834343863383935623264363338623032393936313530640a623836623961333038363830306537
@@ -11,8 +11,8 @@
           62306230393735643934613065333735303735373936383639396532323763633932626435666337
           37653833306138353562376663376233643763643964323166336330393338636261306466343236
           39643338636639343861
-    show_disk_space: "<show><system><disk-space></disk-space></system></show>"
-    pan_api_url: "https://192.168.200.1/api/"
+    - show_disk_space: "<show><system><disk-space></disk-space></system></show>"
+    - pan_api_url: "https://192.168.200.1/api/"
   tasks:
     - name: Show disk-space usage
       show_disk_space:
