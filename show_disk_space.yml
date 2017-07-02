@@ -1,5 +1,5 @@
 ---
-- hosts: 192.168.200.112
+- hosts: localhost
   name: get disk-space usage
   roles:
     - pan
