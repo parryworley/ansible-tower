@@ -2,7 +2,9 @@
 
 from ansible.module_utils.basic import AnsibleModule
 import requests
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 def main():
 
@@ -19,7 +21,7 @@ def main():
 
     payload = {"type": "op", "key": api_key, "cmd": cmd}
 
-    r = requests.get(url, params=payload)
+    r = requests.get(url, params=payload, verify=False)
     if r.status_code == requests.codes.ok:
         result = {"response": r.text}
         module.exit_json(changed=False, meta=result)
