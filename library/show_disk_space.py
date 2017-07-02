@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 from ansible.module_utils.basic import AnsibleModule
+import xml.etree.ElementTree as ET
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
@@ -23,8 +24,10 @@ def main():
 
     r = requests.get(url, params=payload, verify=False)
     if r.status_code == requests.codes.ok:
+        root = ET.fromstring(r.text)
+        status = root.
         result = {"response": r.text}
-        module.exit_json(changed=True, meta=result)
+        module.exit_json(changed=False, meta=result)
     else:
         module.exit_json(msg="Something went wrong")
 

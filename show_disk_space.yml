@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
+  gather_facts: False
   vars:
     api_key: !vault |
           $ANSIBLE_VAULT;1.1;AES256
