@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 from ansible.module_utils.basic import AnsibleModule
 import xml.etree.ElementTree as ET
 import requests
