@@ -1,5 +1,6 @@
 ---
 - hosts: 192.168.200.112
+  name: get disk-space usage
   roles:
     - pan
   gather_facts: True
