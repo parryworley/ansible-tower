@@ -7,8 +7,8 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-def main():
 
+def main():
 
     fields = {
         "pan_api_key": {"required": True, "type": "str"},
@@ -25,8 +25,9 @@ def main():
     r = requests.get(url, params=payload, verify=False)
     if r.status_code == requests.codes.ok:
         root = ET.fromstring(r.text)
-        status = root.
-        result = {"response": r.text}
+        status = root.get("status")
+        text = root.find("result")
+        result = {"result": text, "status": status}
         module.exit_json(changed=False, meta=result)
     else:
         module.exit_json(msg="Something went wrong")
