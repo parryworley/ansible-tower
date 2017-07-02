@@ -26,7 +26,7 @@ def main():
     if r.status_code == requests.codes.ok:
         root = ET.fromstring(r.text)
         status = root.get("status")
-        text = root.find("result")
+        text = root.find("result").text
         result = {"result": text, "status": status}
         module.exit_json(changed=False, meta=result)
     else:
