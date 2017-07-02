@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: 192.168.200.112
   roles:
     - pan
   gather_facts: False
