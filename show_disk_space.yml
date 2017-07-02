@@ -2,7 +2,7 @@
 - hosts: 192.168.200.112
   roles:
     - pan
-  gather_facts: False
+  gather_facts: !all
   tasks:
     - name: Show disk-space usage
       show_disk_space:
