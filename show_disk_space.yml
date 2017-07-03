@@ -10,4 +10,3 @@
         pan_api_key: "{{ api['key'] }}"
         pan_cmd: "{{ cmd['show_disk_space'] }}"
         pan_api_url: "{{ api['url'] }}"
-      register: result
