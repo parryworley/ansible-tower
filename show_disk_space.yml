@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: Test_Group
   name: get disk-space usage
   roles:
     - pan
