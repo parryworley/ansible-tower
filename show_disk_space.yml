@@ -7,7 +7,7 @@
   tasks:
     - name: bare include (free-form)
       include_vars:
-        dir: 'roles/pan/vars/'
+        file: 'roles/pan/vars/vars.yml'
       no_log: True
     - name: Show disk-space usage
       show_disk_space:
