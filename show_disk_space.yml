@@ -3,10 +3,11 @@
   name: get disk-space usage
   roles:
     - pan
-  gather_facts: True
+  gather_facts: False
   tasks:
     - name: Show disk-space usage
       show_disk_space:
         pan_api_key: "{{ api['key'] }}"
         pan_cmd: "{{ cmd['show_disk_space'] }}"
         pan_api_url: "{{ api['url'] }}"
+        secretkey: "{{ secret }}"

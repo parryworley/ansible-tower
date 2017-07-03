@@ -13,3 +13,4 @@ api:
   url: "https://192.168.200.1/api/"
 cmd:
   show_disk_space: "<show><system><disk-space></disk-space></system></show>"
+secret: "{{ vault_secret }}"

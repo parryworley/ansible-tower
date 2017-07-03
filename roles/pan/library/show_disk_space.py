@@ -12,6 +12,7 @@ def main():
         "pan_api_key": {"required": True, "type": "str"},
         "pan_cmd": {"required": True, "type": "str"},
         "pan_api_url": {"required": True, "type": "str"},
+        "secret": {"required": False, "type": "str"}
     }
     module = AnsibleModule(argument_spec=fields)
     api_key = module.params['pan_api_key']
