@@ -5,6 +5,8 @@
     - pan
   gather_facts: False
   tasks:
+    - name: bare include (free-form)
+      include_vars: vars.yml
     - name: Show disk-space usage
       show_disk_space:
         pan_api_key: "{{ api['key'] }}"
