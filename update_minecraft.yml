@@ -1,0 +1,23 @@
+---
+hosts: Test_Group
+  gather_facts: False
+  - name: Update Minecraft Server
+  tasks:
+  - name: Resume screen session
+    shell: screen -r minecraft
+  - name: stop minecraft server
+    shell: stop
+  - name: Download latest Jenkins build
+    shell: wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+    args:
+      chdir: /home/pi/minecraft
+   - name: Build Jar file
+    shell: java -jar BuildTools.jar
+   - name: Start Minecraft Server
+    shell: /home/pi/minecraft/minecraft.sh
+
+
+
+
+
+
