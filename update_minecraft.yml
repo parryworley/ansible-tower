@@ -22,7 +22,7 @@
       regexp: 'screen'
       line: 'screen -S minecraft -d -m java -jar  -Xms512M -Xmx1008M {{ ls_output.stdout }} nogui  && break'
     - name: Start Minecraft Server
-    shell: /home/pi/minecraft/minecraft.sh
+      shell: /home/pi/minecraft/minecraft.sh
 
 
 
