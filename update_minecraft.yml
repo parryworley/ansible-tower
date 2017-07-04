@@ -13,8 +13,8 @@
       shell: /usr/bin/java -jar "{{ mc_path }}/BuildTools.jar"
     - name: Get spigot file name
       shell: /bin/ls -1c spigot*.jar | head -1
-        args:
-          chdir: "{{ mc_path }}"
+      args:
+        chdir: "{{ mc_path }}"
       register: ls_output
     - name: Edit Minecraft script - launch in screen session
       lineinfile:
