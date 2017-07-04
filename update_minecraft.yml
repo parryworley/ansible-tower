@@ -1,5 +1,5 @@
 ---
-hosts: Test_Group
+- hosts: Test_Group
   - name: Update Minecraft Server
   gather_facts: False
   tasks:
