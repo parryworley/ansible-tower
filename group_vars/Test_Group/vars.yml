@@ -1,3 +1,4 @@
 ---
 secret: "{{ vault_secret }}"
+mc_path: /home/pi/minecraft-update
 ...
