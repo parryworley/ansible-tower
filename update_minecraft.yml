@@ -5,8 +5,6 @@
   tasks:
     - name: Quit the screen session
       shell: screen -X -S minecraft quit
-    - name: stop minecraft server
-      shell: stop
     - name: Download latest Jenkins build
       shell: wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
       args:
