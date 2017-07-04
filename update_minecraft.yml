@@ -8,7 +8,7 @@
     - name: Download latest Jenkins build
       get_url:
         url: https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
-        dest: "{{ mc_path }}"/BuildTools.jar
+        dest: "{{ mc_path }}/BuildTools.jar"
     - name: Build Jar file
       shell: /usr/bin/java -jar /home/pi/minecraft/BuildTools.jar
     - name: Get spigot file name
@@ -18,9 +18,9 @@
       register: ls_output
     - name: Edit Minecraft script
       lineinfile:
-        path: "{{ mc_path }}"/minecraft.sh
+        path: "{{ mc_path }}/minecraft.sh"
         regexp: 'screen'
         line: 'screen -S minecraft -d -m java -jar  -Xms512M -Xmx1008M {{ ls_output.stdout }} nogui  && break'
     - name: Start Minecraft Server
-      shell: "{{ mc_path }}"/minecraft.sh
+      shell: "{{ mc_path }}/minecraft.sh"
 ...
