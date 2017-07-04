@@ -3,8 +3,8 @@
   name: Update Minecraft Server
   gather_facts: False
   tasks:
-    - name: Resume screen session
-      shell: screen -r minecraft
+    - name: Quit the screen session
+      shell: screen -X -S minecraft quit
     - name: stop minecraft server
       shell: stop
     - name: Download latest Jenkins build
