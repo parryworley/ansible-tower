@@ -6,13 +6,13 @@
     - name: Quit the screen session
       shell: screen -X -S minecraft quit
     - name: Download latest Jenkins build
-      shell: wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
-      args:
-        chdir: /home/pi/minecraft
+      get_url:
+        url: https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+        dest: /home/pi/minecraft/BuildTools.jar
     - name: Build Jar file
-      shell: java -jar BuildTools.jar
+      shell: /usr/bin/java -jar /home/pi/minecraft/BuildTools.jar
     - name: Get spigot file name
-      shell: ls | grep spigot*.jar
+      shell: /bin/ls /home/pi/minecraft | grep spigot*.jar
       register: ls_output
     - name: Edit Minecraft script
       lineinfile:
