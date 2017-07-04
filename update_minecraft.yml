@@ -3,26 +3,26 @@
   name: Update Minecraft Server
   gather_facts: False
   tasks:
-  - name: Resume screen session
-    shell: screen -r minecraft
-  - name: stop minecraft server
-    shell: stop
-  - name: Download latest Jenkins build
-    shell: wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
-    args:
-      chdir: /home/pi/minecraft
-   - name: Build Jar file
-    shell: java -jar BuildTools.jar
-   - name: Get spigot file name
-    shell: ls | grep spigot*.jar
-    register: ls_output
-   - name: Edit Minecraft script
-    - lineinfile:
-      path: /home/pi/minecraft/minecraft.sh
-      regexp: 'screen'
-      line: 'screen -S minecraft -d -m java -jar  -Xms512M -Xmx1008M {{ ls_output.stdout }} nogui  && break'
-   - name: Start Minecraft Server
-    shell: /home/pi/minecraft/minecraft.sh
+    - name: Resume screen session
+      shell: screen -r minecraft
+    - name: stop minecraft server
+      shell: stop
+    - name: Download latest Jenkins build
+      shell: wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+      args:
+        chdir: /home/pi/minecraft
+     - name: Build Jar file
+      shell: java -jar BuildTools.jar
+     - name: Get spigot file name
+      shell: ls | grep spigot*.jar
+      register: ls_output
+     - name: Edit Minecraft script
+      - lineinfile:
+        path: /home/pi/minecraft/minecraft.sh
+        regexp: 'screen'
+        line: 'screen -S minecraft -d -m java -jar  -Xms512M -Xmx1008M {{ ls_output.stdout }} nogui  && break'
+     - name: Start Minecraft Server
+      shell: /home/pi/minecraft/minecraft.sh
 
 
 
