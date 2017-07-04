@@ -12,7 +12,9 @@
     - name: Build Jar file
       shell: /usr/bin/java -jar /home/pi/minecraft/BuildTools.jar
     - name: Get spigot file name
-      shell: /bin/ls /home/pi/minecraft | grep spigot*.jar
+      shell: /bin/ls -1c spigot*.jar | head -1
+        args:
+          chdir: /home/pi/minecraft
       register: ls_output
     - name: Edit Minecraft script
       lineinfile:
