@@ -16,12 +16,12 @@
         args:
           chdir: "{{ mc_path }}"
       register: ls_output
-    - name: Edit Minecraft script
+    - name: Edit Minecraft script - launch in screen session
       lineinfile:
         path: "{{ mc_path }}/minecraft.sh"
         regexp: 'screen'
         line: 'screen -S minecraft -d -m java -jar  -Xms512M -Xmx1008M {{ ls_output.stdout }} nogui  && break'
-    - name: Edit Minecraft script
+    - name: Edit Minecraft script - set minecraft path
       lineinfile:
         path: "{{ mc_path }}/minecraft.sh"
         regexp: 'cd '
