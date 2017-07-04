@@ -1,6 +1,6 @@
 ---
 - hosts: Test_Group
-  - name: Update Minecraft Server
+  name: Update Minecraft Server
   gather_facts: False
   tasks:
   - name: Resume screen session
