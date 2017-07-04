@@ -10,7 +10,7 @@
         url: https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
         dest: "{{ mc_path }}/BuildTools.jar"
     - name: Build Jar file
-      shell: /usr/bin/java -jar /home/pi/minecraft/BuildTools.jar
+      shell: /usr/bin/java -jar "{{ mc_path }}/BuildTools.jar"
     - name: Get spigot file name
       shell: /bin/ls -1c spigot*.jar | head -1
         args:
