@@ -21,6 +21,11 @@
         path: "{{ mc_path }}/minecraft.sh"
         regexp: 'screen'
         line: 'screen -S minecraft -d -m java -jar  -Xms512M -Xmx1008M {{ ls_output.stdout }} nogui  && break'
+    - name: Edit Minecraft script
+      lineinfile:
+        path: "{{ mc_path }}/minecraft.sh"
+        regexp: 'cd '
+        line: '  cd {{ mc_path }}'
     - name: Start Minecraft Server
       shell: "{{ mc_path }}/minecraft.sh"
 ...
