@@ -12,6 +12,8 @@
         force: yes
     - name: Build Jar file
       shell: /usr/bin/java -jar "{{ mc_path }}/BuildTools.jar"
+      args:
+        chdir: "{{ mc_path }}"
     - name: Get spigot file name
       shell: /bin/ls -1c spigot*.jar | head -1
       args:
