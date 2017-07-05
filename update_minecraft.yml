@@ -4,7 +4,7 @@
   gather_facts: False
   tasks:
     - name: Quit the screen session
-      shell: screen -X -S minecraft quit
+      shell: /usr/bin/screen -X -S minecraft quit
     - name: Download latest Jenkins build
       get_url:
         url: https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
