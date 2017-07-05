@@ -1,5 +1,5 @@
 ---
 mc_host: Minepi
-mc_dir: minecraft-update
+mc_dir: minecraft
 mc_path: "/home/pi/{{ mc_dir }}"
 ...
