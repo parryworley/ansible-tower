@@ -1,5 +1,5 @@
 ---
-- hosts: "{{ mc_host }}"
+- hosts: Minepi
   name: Update Minecraft Server
   gather_facts: False
   tasks:
