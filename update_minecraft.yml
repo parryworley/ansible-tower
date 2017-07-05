@@ -30,6 +30,12 @@
         path: "{{ mc_path }}/minecraft.sh"
         regexp: 'cd '
         line: '  cd {{ mc_path }}'
+    - name: Edit rc.local
+      lineinfile:
+        path: "/etc/rc.local"
+        regexp: '^su -l pi'
+        line: 'su -l pi -c {{ mc_path }}/minecraft.sh'
+      become: yes
     - name: Start Minecraft Server
       shell: "{{ mc_path }}/minecraft.sh"
 ...
