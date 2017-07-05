@@ -1,0 +1,12 @@
+---
+- hosts: Minepi_Group
+  name: Update Minecraft Server
+  gather_facts: False
+  tasks:
+    - name: Edit rc.local
+      lineinfile:
+        path: "{{ mc_path }}/minecraft.sh"
+        regexp: 'su -l pi -c '
+        line: 'su -l pi -c {{ mc_path }}/minecraft.sh'
+      become: yes
+...
