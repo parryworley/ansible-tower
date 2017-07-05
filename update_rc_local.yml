@@ -5,8 +5,8 @@
   tasks:
     - name: Edit rc.local
       lineinfile:
-        path: "{{ mc_path }}/minecraft.sh"
-        regexp: 'su -l pi -c '
+        path: "/etc/rc.local"
+        regexp: '^su -l pi'
         line: 'su -l pi -c {{ mc_path }}/minecraft.sh'
       become: yes
 ...
