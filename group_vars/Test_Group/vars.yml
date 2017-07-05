@@ -1,5 +1,3 @@
 ---
 secret: "{{ vault_secret }}"
-mc_dir: minecraft-update
-mc_path: "/home/pi/{{ mc_dir }}"
 ...

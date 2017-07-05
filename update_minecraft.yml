@@ -1,5 +1,5 @@
 ---
-- hosts: Test_Group
+- hosts: "{{ mc_host }}"
   name: Update Minecraft Server
   gather_facts: False
   tasks:
