@@ -9,4 +9,3 @@
         regexp: '^su -l pi'
         line: 'su -l pi -c {{ mc_path }}/minecraft.sh'
       become: yes
-...
