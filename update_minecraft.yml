@@ -3,38 +3,38 @@
   name: Update Minecraft Server
   gather_facts: False
   tasks:
-    - name: Quit the screen session
+    - name: Stop Minecraft Server
       shell: /usr/bin/screen -X -S minecraft quit
       ignore_errors: yes
     - name: Download latest Jenkins build
       get_url:
         url: https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
-        dest: "{{ mc_path|quote }}/BuildTools.jar"
+        dest: "{{ mc_path }}/BuildTools.jar"
         force: yes
     - name: Build Jar file
-      shell: "/usr/bin/java -jar {{ mc_path|quote }}/BuildTools.jar"
+      shell: "/usr/bin/java -jar {{ mc_path }}/BuildTools.jar"
       args:
         chdir: "{{ mc_path }}"
     - name: Get spigot file name
       shell: /bin/ls -1c spigot*.jar | head -1
       args:
-        chdir: "{{ mc_path|quote }}"
+        chdir: "{{ mc_path }}"
       register: ls_output
     - name: Edit Minecraft script - launch in screen session
       lineinfile:
-        path: "{{ mc_path|quote }}/minecraft.sh"
+        path: "{{ mc_path }}/minecraft.sh"
         regexp: 'screen'
         line: 'screen -S minecraft -d -m java -jar  -Xms512M -Xmx1008M {{ ls_output.stdout }} nogui  && break'
     - name: Edit Minecraft script - set minecraft path
       lineinfile:
-        path: "{{ mc_path|quote }}/minecraft.sh"
+        path: "{{ mc_path }}/minecraft.sh"
         regexp: 'cd '
-        line: '  cd {{ mc_path|quote }}'
+        line: '  cd {{ mc_path }}'
     - name: Edit rc.local
       lineinfile:
         path: "/etc/rc.local"
         regexp: '^su -l pi'
-        line: 'su -l pi -c {{ mc_path|quote }}/minecraft.sh'
+        line: 'su -l pi -c {{ mc_path }}/minecraft.sh'
       become: yes
     - name: Start Minecraft Server
-      shell: "{{ mc_path|quote }}/minecraft.sh"
+      shell: "{{ mc_path }}/minecraft.sh"
