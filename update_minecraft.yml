@@ -6,6 +6,15 @@
     - name: Stop Minecraft Server
       shell: /usr/bin/screen -X -S minecraft quit
       ignore_errors: yes
+    - name: Stat minecraft directory
+      stat:
+        path: "{{ mc_path }}"
+      register: p
+    - name: Create directory
+      file:
+        path: "{{ mc_path }}"
+        state: directory
+      when: p.stat.exists == False
     - name: Download latest Jenkins build
       get_url:
         url: https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
