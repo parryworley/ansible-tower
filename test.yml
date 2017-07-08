@@ -8,7 +8,7 @@
         path: "{{ mc_path }}"
       register: p
     - name: Create directory
-        file:
-          path: "{{ mc_path }}"
-          state: directory
+      file:
+        path: "{{ mc_path }}"
+        state: directory
       when: p.stat.isdir is defined and p.stat.isdir
