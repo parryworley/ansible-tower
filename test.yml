@@ -8,6 +8,6 @@
         path: "{{ mc_path }}"
       register: p
     - debug:
-      msg: "Path exists and is a directory"
-    when: p.stat.isdir is defined and p.stat.isdir
+        msg: "Path exists and is a directory"
+      when: p.stat.isdir is defined and p.stat.isdir
 
