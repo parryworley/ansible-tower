@@ -1,6 +1,6 @@
 ---
 - hosts: Minepi_Group
-  name: Check if director exists
+  name: Check if directory exists
   gather_facts: False
   tasks:
     - name: Stat minecraft directory
@@ -11,4 +11,4 @@
       file:
         path: "{{ mc_path }}"
         state: directory
-      when: p.stat.isdir is defined and p.stat.isdir
+      when: p.stat.exists == False
