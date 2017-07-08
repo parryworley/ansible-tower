@@ -1,0 +1,13 @@
+---
+- hosts: Minepi_Group
+  name: Check if director exists
+  gather_facts: False
+  tasks:
+    - name: Stat minecraft directory
+      stat:
+        path: "{{ mc_path }}"
+      register: p
+    - debug:
+      msg: "Path exists and is a directory"
+    when: p.stat.isdir is defined and p.stat.isdir
+
