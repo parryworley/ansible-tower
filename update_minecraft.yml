@@ -10,11 +10,15 @@
       stat:
         path: "{{ mc_path }}"
       register: p
+    - name: Determine if new install or update
+      set_fact:
+        new_install: true
+      when: p.stat.exists == False
     - name: Create directory
       file:
         path: "{{ mc_path }}"
         state: directory
-      when: p.stat.exists == False
+      when: new_install == true
     - name: Download latest Jenkins build
       get_url:
         url: https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
@@ -29,16 +33,24 @@
       args:
         chdir: "{{ mc_path }}"
       register: ls_output
-    - name: Edit Minecraft script - launch in screen session
-      lineinfile:
-        path: "{{ mc_path }}/minecraft.sh"
-        regexp: 'screen'
-        line: 'screen -S minecraft -d -m java -jar -Xms512M -Xmx1008M {{ ls_output.stdout }} nogui && break'
-    - name: Edit Minecraft script - set minecraft path
-      lineinfile:
-        path: "{{ mc_path }}/minecraft.sh"
-        regexp: 'cd '
-        line: '  cd {{ mc_path }}'
+#    - name: Edit Minecraft script - launch in screen session
+#      lineinfile:
+#        path: "{{ mc_path }}/minecraft.sh"
+#        regexp: 'screen'
+#        line: 'screen -S minecraft -d -m java -jar -Xms512M -Xmx1008M {{ ls_output.stdout }} nogui && break'
+#    - name: Edit Minecraft script - set minecraft path
+#      lineinfile:
+#        path: "{{ mc_path }}/minecraft.sh"
+#        regexp: 'cd '
+#        line: '  cd {{ mc_path }}'
+    - name: Copy updated minecraft.sh script
+      template:
+        src: templates/minecraft.sh.j2
+        dest: "{{ mc_path }}/minecraft.sh"
+    - name: Copy plugins folder
+      copy:
+        src: files/plugins
+        dest: {{ mc_path }}/plugins
     - name: Edit rc.local
       lineinfile:
         path: "/etc/rc.local"

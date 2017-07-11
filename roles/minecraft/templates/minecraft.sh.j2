@@ -1,0 +1,6 @@
+if ! screen -list | grep -q "minecraft"; then
+  cd {{ mc_path }}
+  while true; do
+screen -S minecraft -d -m java -jar  -Xms512M -Xmx1008M {{ ls_output.stdout }} nogui  && break
+  done
+fi
