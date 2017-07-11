@@ -18,6 +18,7 @@
       command: echo "preparing for new installation"
       notify: "new install"
       when: new_install == true
+    - meta: flush_handlers
     - name: Download latest Jenkins build
       get_url:
         url: https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
