@@ -19,7 +19,7 @@
     - name: Create new install pre-work
       command: echo "preparing for new installation"
       notify: "new install"
-      when: new_install == true
+      when: new_install is defined and new_install == true
     - meta: flush_handlers
     - name: Download latest Jenkins build
       get_url:
