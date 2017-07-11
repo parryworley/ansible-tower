@@ -5,9 +5,9 @@
   roles:
     - minecraft
   tasks:
-#    - name: Stop Minecraft Server
-#      shell: /usr/bin/screen -X -S minecraft quit
-#      ignore_errors: yes
+    - name: Stop Minecraft Server
+      shell: /usr/bin/screen -X -S minecraft quit
+      ignore_errors: yes
     - name: Stat minecraft directory
       stat:
         path: "{{ mc_path }}"
@@ -17,10 +17,6 @@
         new_install: true
       notify: "new install"
       when: p.stat.exists == False
-#    - name: Create new install pre-work
-#      command: echo "preparing for new installation"
-#      notify: "new install"
-#      when: new_install is defined and new_install == true
     - meta: flush_handlers
     - name: Download latest Jenkins build
       get_url:
@@ -56,8 +52,8 @@
         regexp: '^su -l pi'
         line: 'su -l pi -c {{ mc_path }}/minecraft.sh'
       become: yes
-#    - name: Start Minecraft Server
-#      shell: "{{ mc_path }}/minecraft.sh"
+    - name: Start Minecraft Server
+      shell: "{{ mc_path }}/minecraft.sh"
   handlers:
     - name: Create directory
       file:
@@ -67,7 +63,7 @@
     - name: Copy plugins
       copy:
         src: roles/minecraft/files/plugins
-        dest: "{{ mc_path }}/plugins"
+        dest: "{{ mc_path }}/"
       listen: "new install"
     - name: Copy admin
       copy:
