@@ -13,14 +13,8 @@
     - name: Determine if new install or update
       set_fact:
         new_install: true
+      notify: "new install"
       when: p.stat.exists == False
-    - name: Call handlers if new install
-      notify:
-        - Create directory
-        - Copy plugins
-        - Copy admin
-        - copy eula
-      when: new_install == true
     - name: Download latest Jenkins build
       get_url:
         url: https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
