@@ -3,9 +3,9 @@
   name: Update Minecraft Server
   gather_facts: False
   tasks:
-    - name: Stop Minecraft Server
-      shell: /usr/bin/screen -X -S minecraft quit
-      ignore_errors: yes
+#    - name: Stop Minecraft Server
+#      shell: /usr/bin/screen -X -S minecraft quit
+#      ignore_errors: yes
     - name: Stat minecraft directory
       stat:
         path: "{{ mc_path }}"
@@ -33,7 +33,7 @@
       lineinfile:
         path: "{{ mc_path }}/minecraft.sh"
         regexp: 'screen'
-        line: 'screen -S minecraft -d -m java -jar  -Xms512M -Xmx1008M {{ ls_output.stdout }} nogui  && break'
+        line: 'screen -S minecraft -d -m java -jar -Xms512M -Xmx1008M {{ ls_output.stdout }} nogui && break'
     - name: Edit Minecraft script - set minecraft path
       lineinfile:
         path: "{{ mc_path }}/minecraft.sh"
