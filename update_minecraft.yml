@@ -47,7 +47,7 @@
 #        line: '  cd {{ mc_path }}'
     - name: Copy updated minecraft.sh script
       template:
-        src: templates/minecraft.sh.j2
+        src: /roles/minecraft/templates/minecraft.sh.j2
         dest: "{{ mc_path }}/minecraft.sh"
     - name: Edit rc.local
       lineinfile:
@@ -65,16 +65,16 @@
       listen: "new install"
     - name: Copy plugins
       copy:
-        src: files/plugins
+        src: /roles/minecraft/files/plugins
         dest: "{{ mc_path }}/plugins"
       listen: "new install"
     - name: Copy admin
       copy:
-        src: files/admin.txt
+        src: /roles/minecraft/files/admin.txt
         dest: "{{ mc_path }}/admin.txt"
       listen: "new install"
     - name: Copy eula
       copy:
-        src: files/eula.txt
+        src: /roles/minecraft/files/eula.txt
         dest: "{{ mc_path }}/eula.txt"
       listen: "new install"
