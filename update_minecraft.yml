@@ -50,7 +50,7 @@
     - name: Copy plugins folder
       copy:
         src: files/plugins
-        dest: {{ mc_path }}/plugins
+        dest: "{{ mc_path }}/plugins"
     - name: Edit rc.local
       lineinfile:
         path: "/etc/rc.local"
