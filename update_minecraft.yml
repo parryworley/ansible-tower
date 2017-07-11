@@ -55,7 +55,7 @@
     - name: Copy admin.txt
       copy:
         src: files/admin.txt
-        dest: "{{ mc_path }}
+        dest: "{{ mc_path }}"
       when: new_install == true
     - name: Copy eula
       copy:
