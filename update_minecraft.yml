@@ -57,5 +57,5 @@
         regexp: '^su -l pi'
         line: 'su -l pi -c {{ mc_path }}/minecraft.sh'
       become: yes
-    - name: Start Minecraft Server
-      shell: "{{ mc_path }}/minecraft.sh"
+#    - name: Start Minecraft Server
+#      shell: "{{ mc_path }}/minecraft.sh"
