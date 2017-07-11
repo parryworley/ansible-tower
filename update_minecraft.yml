@@ -36,6 +36,7 @@
       template:
         src: roles/minecraft/templates/minecraft.sh.j2
         dest: "{{ mc_path }}/minecraft.sh"
+        mode: 0755
     - name: Edit rc.local
       lineinfile:
         path: "/etc/rc.local"
