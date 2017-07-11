@@ -2,6 +2,7 @@
 - hosts: Minepi_Group
   name: Update Minecraft Server
   gather_facts: False
+  roles: minecraft
   tasks:
 #    - name: Stop Minecraft Server
 #      shell: /usr/bin/screen -X -S minecraft quit
