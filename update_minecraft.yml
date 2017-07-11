@@ -51,6 +51,17 @@
       copy:
         src: files/plugins
         dest: "{{ mc_path }}/plugins"
+      when: new_install == true
+    - name: Copy admin.txt
+      copy:
+        src: files/admin.txt
+        dest: "{{ mc_path }}
+      when: new_install == true
+    - name: Copy eula
+      copy:
+        src: files/eula.txt
+        dest: "{{ mc_path }}
+      when: new_install == true
     - name: Edit rc.local
       lineinfile:
         path: "/etc/rc.local"
