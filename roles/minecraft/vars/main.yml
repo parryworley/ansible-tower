@@ -1,4 +1,3 @@
 ---
-mc_dir: minecraft
-mc_path: "/home/pworley/{{ mc_dir }}"
-#mc_path: "/home/pi/{{ mc_dir }}"
+mc_dir: minecraft-2
+mc_path: "/home/pi/{{ mc_dir }}"
