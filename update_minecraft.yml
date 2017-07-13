@@ -1,5 +1,5 @@
 ---
-- hosts: Minepi
+- hosts: Minepi_Group
   name: Update Minecraft Server
   gather_facts: False
   roles:
