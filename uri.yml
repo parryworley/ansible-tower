@@ -18,4 +18,4 @@
     - name: Print admin users and roles
       debug: msg="User {{ item.@name }} has the {{ item.permissions.role-based.keys() }} role."
       with_dict:
-        - "{{ api }}"
+        - "{{ api | from_json }}"
