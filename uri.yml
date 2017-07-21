@@ -11,4 +11,7 @@
         validate_certs: no
         return_content: yes
       register: data
-    - debug: msg="{{ data.content|xml2json }}"
+    - name: Convert the XML response data to JSON
+      set_fact:
+        api: "{{ data.content|xml2json}}"
+    - debug: msg="{{ api.response.result.users }}"
