@@ -1,14 +1,15 @@
 ---
-- hosts: Minepi_Group
-  name: Update Minecraft Server
+- hosts: Test_Group
+  name: Get Palo Disk usage
   gather_facts: False
   roles:
     - pan
   tasks:
     - name: Get disk usage from Palo API
-      uri: "{{ pan.api.url }}?type=get&action=get&xpath=/config/mgt-config/users&key={{ pan.api.key }}"
-      return_content: yes
-    register: data
+      uri:
+        url: "{{ pan.api.url }}?type=get&action=get&xpath=/config/mgt-config/users&key={{ pan.api.key }}"
+        return_content: yes
+      register: data
     - name: print return data
       msg: These are the firewall admin users
       var: data.content
