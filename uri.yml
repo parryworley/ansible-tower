@@ -11,4 +11,4 @@
         validate_certs: no
         return_content: yes
       register: data
-    - debug: msg="{{ lookup('xmlfile', data.content)|xml2json }}"
+    - debug: msg="{{ data.content|xml2json }}"
