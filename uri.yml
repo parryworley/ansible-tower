@@ -16,6 +16,6 @@
         api: "{{ data.content|xml2json}}"
     - debug: msg="{{ api.response.result.users }}"
     - name: Print admin users and roles
-      debug: msg="User {{ item['@name'] }} has the {{ item['permissions']['role-based'].keys()[0] }} role."
+      debug: msg="User {{ item['@name'] }} has the {{ item.permissions.role-based.key }} role."
       with_items:
         - "{{ api.response.result.users.entry }}"
