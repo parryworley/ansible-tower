@@ -8,6 +8,7 @@
     - name: Get disk usage from Palo API
       uri:
         url: "{{ pan.api.url }}?type=get&action=get&xpath=/config/mgt-config/users&key={{ pan.api.key }}"
+        validate_certs: no
         return_content: yes
       register: data
     - name: print return data
