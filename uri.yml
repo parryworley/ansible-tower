@@ -1,11 +1,11 @@
 ---
 - hosts: Test_Group
-  name: Get Palo Disk usage
+  name: Get Palo Admin Users
   gather_facts: False
   roles:
     - pan
   tasks:
-    - name: Get disk usage from Palo API
+    - name: Send API Call
       uri:
         url: "{{ pan.api.url }}?type=config&action=get&xpath=/config/mgt-config/users&key={{ pan.api.key }}"
         validate_certs: no
