@@ -11,5 +11,6 @@
         return_content: yes
       register: data
     - name: print return data
-      msg: These are the firewall admin users
-      var: data.content
+      debug:
+        msg: These are the firewall admin users
+        var: data.content
