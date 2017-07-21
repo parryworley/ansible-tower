@@ -14,7 +14,7 @@
     - name: Convert the XML response data to JSON
       set_fact:
         api: "{{ data.content|xml2json}}"
-        data: "{{ api.response.result.users.entry | to_yaml }}"
+        apitoyaml: "{{ api.response.result.users.entry | to_yaml }}"
     - debug: msg="{{ data }}"
 #    - name: Print admin users and roles
 ##      debug: "echo User {{ item['@name'] }} has the {{ item['permissions']['role-based'].keys()[0] }} role."
