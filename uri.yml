@@ -13,5 +13,4 @@
       register: data
     - name: print return data
       debug:
-        msg: These are the firewall admin users
         var: data.content
