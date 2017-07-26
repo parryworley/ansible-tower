@@ -1,0 +1,21 @@
+---
+- hosts: Test_Group
+  name: Get Palo Admin Users
+  gather_facts: False
+  roles:
+    - pan
+  tasks:
+    - name: Send API Call
+      uri:
+        url: "{{ pan.api.url }}?type=config&action=get&xpath=/config/mgt-config/users&key={{ pan.api.key }}"
+        validate_certs: no
+        return_content: yes
+      register: data
+    - name: Convert the XML response data to JSON
+      set_fact:
+        api: "{{ data.content|xml2json }}"
+    - debug: msg="{{ api }}"
+    - name: Print admin users and roles
+      debug: "echo User {{ item['@name'] }} has the {{ item['permissions']['role-based'].keys()[0] }} role."
+      with_items:
+        - "{{ api.response.result.users.entry }}"
