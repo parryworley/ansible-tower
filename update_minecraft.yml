@@ -5,9 +5,9 @@
   roles:
     - minecraft
   tasks:
-#    - name: Stop Minecraft Server
-#      shell: /usr/bin/screen -X -S minecraft quit
-#      ignore_errors: yes
+    - name: Stop Minecraft Server
+      shell: /usr/bin/screen -X -S minecraft quit
+      ignore_errors: yes
     - name: Stat minecraft directory
       stat:
         path: "{{ mc_path }}"
@@ -43,8 +43,8 @@
         regexp: '^su -l pi'
         line: 'su -l pi -c {{ mc_path }}/minecraft.sh'
       become: yes
-#    - name: Start Minecraft Server
-#      shell: "{{ mc_path }}/minecraft.sh"
+    - name: Start Minecraft Server
+      shell: "{{ mc_path }}/minecraft.sh"
   handlers:
     - name: Create directory
       file:
