@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: Test_Group
   name: get disk-space usage
   roles:
     - pan
@@ -10,4 +10,5 @@
         pan_api_key: "{{ pan.api.key }}"
         pan_cmd: "{{ pan.cmd.show_disk_space }}"
         pan_api_url: "{{ pan.api.url }}"
+        secretkey: "{{ secret }}"
 ...
